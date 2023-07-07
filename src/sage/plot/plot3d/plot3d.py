@@ -248,7 +248,7 @@ class _Coordinates():
 
         Because the base :class:`_Coordinates` class automatically checks the
         initializing variables with the transform method, :class:`_Coordinates`
-        cannot be instantiated by itself.  We test a subclass.
+        cannot be instantiated by itself.  We test a subclass::
 
             sage: from sage.plot.plot3d.plot3d import _ArbitraryCoordinates as arb
             sage: x,y,z=var('x,y,z')
@@ -886,7 +886,7 @@ class TrivialTriangleFactory:
     but simply returning a list of vertices for both regular and
     smooth triangles.
     """
-    def triangle(self, a, b, c, color = None):
+    def triangle(self, a, b, c, color=None):
         """
         Function emulating behavior of
         :meth:`~sage.plot.plot3d.tri_plot.TriangleFactory.triangle`
@@ -911,8 +911,9 @@ class TrivialTriangleFactory:
             sage: tri
             [[0, 0, 0], [0, 0, 1], [1, 1, 0]]
         """
-        return [a,b,c]
-    def smooth_triangle(self, a, b, c, da, db, dc, color = None):
+        return [a, b, c]
+
+    def smooth_triangle(self, a, b, c, da, db, dc, color=None):
         """
         Function emulating behavior of
         :meth:`~sage.plot.plot3d.tri_plot.TriangleFactory.smooth_triangle`
@@ -1476,9 +1477,9 @@ def plot3d_adaptive(f, x_range, y_range, color="automatic",
             texture = Texture(kwds)
 
     factory = TrivialTriangleFactory()
-    plot = TrianglePlot(factory, g, (xmin, xmax), (ymin, ymax), g = grad_f,
+    plot = TrianglePlot(factory, g, (xmin, xmax), (ymin, ymax), g=grad_f,
                         min_depth=initial_depth, max_depth=max_depth,
-                        max_bend=max_bend, num_colors = None)
+                        max_bend=max_bend, num_colors=None)
 
     P = IndexFaceSet(plot._objects)
     if isinstance(texture, (list, tuple)):

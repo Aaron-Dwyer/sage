@@ -295,7 +295,8 @@ class FriezePattern(PathTableau, metaclass=InheritComparisonClasscallMetaclass):
         """
         n = len(self)
         cd = CylindricalDiagram(self).diagram
-        return all(all(k in ZZ for k in a[i+1:n+i-2]) for i, a in enumerate(cd))
+        return all(k in ZZ for i, a in enumerate(cd)
+                   for k in a[i + 1:n + i - 2])
 
     def triangulation(self):
         r"""
@@ -327,7 +328,7 @@ class FriezePattern(PathTableau, metaclass=InheritComparisonClasscallMetaclass):
         from sage.plot.line import line
         from sage.plot.text import text
         from sage.functions.trig import sin, cos
-        from sage.all import pi
+        from sage.symbolic.constants import pi
         G = Graphics()
         G.set_aspect_ratio(1.0)
 

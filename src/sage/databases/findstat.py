@@ -1499,7 +1499,8 @@ class FindStatFunction(SageObject):
             from sage.repl.preparse import preparse
             try:
                 l = {}
-                code = "from sage.all import *\n" + preparse(self.sage_code())
+                environment = 'sage.all'
+                code = f"from {environment} import *\n" + preparse(self.sage_code())
                 exec(code, l)
             except SyntaxError:
                 raise ValueError("could not execute verified code for %s" % self)
@@ -2918,7 +2919,6 @@ class FindStatCompoundStatistic(Element, FindStatCombinatorialStatistic):
         """
         webbrowser.open(FINDSTAT_URL_STATISTICS + self.id_str())
 
-
     def info(self):
         """
         Print a detailed description of the compound statistic.
@@ -4187,7 +4187,7 @@ class FindStatCollection(Element,
         EXAMPLES::
 
             sage: from sage.databases.findstat import FindStatCollections
-            sage: set(c for c in FindStatCollections())                         # optional -- internet
+            sage: set(FindStatCollections())           # optional -- internet
             {Cc0001: Permutations,
              Cc0002: Integer partitions,
              ...
@@ -4738,6 +4738,7 @@ class FindStatCollections(UniqueRepresentation, Parent):
 #                fields = "SageCodeElementToString,SageCodeElementsOnLevel,SageCodeStringToElement"
 #                url = FINDSTAT_API_COLLECTIONS + id + "?fields=" + fields
 #                print(json.load(urlopen(url))["included"]["Collections"][id])
+
         def position(item):
             try:
                 return tuple(_SupportedFindStatCollections).index(item[1]["NameWiki"])
