@@ -23,6 +23,7 @@ following functions:
     :meth:`~sage.combinat.designs.covering_array.CA_relabel` | Return a relabelled version of the CA.
     :meth:`~sage.combinat.designs.covering_array.CA_standard_label` | Return a version of the CA relabelled to symbols `(0,\dots,n-1)`.
 
+
 REFERENCES:
 
 - [Colb2004]_
